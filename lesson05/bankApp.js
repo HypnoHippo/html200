@@ -1,39 +1,47 @@
-var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
+let account = 500;
 
-while (input != 'Q') {
+function initialize() {
+  var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
 
-  var account = 500;
+  while (input != 'Q') {
 
-  function deposit() {
-    deposit = prompt('Amount to deposit:');
-    newTotal = "New Total: " + (account + deposit * 1);
-    alert(newTotal);
-  }
-
-  function withdraw() {
-    withdraw = prompt('Amount to withdraw:');
-    newTotal = "New Total: " + (account - withdraw * 1);
-    alert(newTotal);
-  }
-
-  switch (input) {
-    case 'W': {
-      withdraw();
-      var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
-      break;
+    function deposit() {
+      deposit = prompt('Amount to deposit:');
+      amount = Number(deposit);
+      account += amount;
     }
-    case 'D': {
-      deposit();
-      var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
-      break;
+
+    function withdraw() {
+      withdraw = prompt('Amount to withdraw:');
+      amount = Number(withdraw);
+      account -= amount;
     }
-    case 'B': {
-      alert(account);
-      var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
-      break;
+
+    function checkBalance() {
+      alert('Current Total: $' + account);
     }
-    default: {
-      var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
+
+    switch (input) {
+      case 'W': {
+        withdraw();
+        checkBalance();
+        var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
+        break;
+      }
+      case 'D': {
+        deposit();
+        checkBalance();
+        var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
+        break;
+      }
+      case 'B': {
+        checkBalance();
+        var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
+        break;
+      }
+      default: {
+        var input = prompt('Select an option: \n\nEnter Q to Quit\n\nEnter W to Withdraw\n\nEnter D to Deposit\n\nEnter B to View Balance\n');
+      }
     }
   }
 }
